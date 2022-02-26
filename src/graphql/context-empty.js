@@ -1,5 +1,5 @@
 const context = (req) => {
-  return {}
-}
+  return {};
+};
 
 export default context;

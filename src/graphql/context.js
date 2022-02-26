@@ -1,7 +1,7 @@
-import { getActorsByIds } from "../db.js";
+import { getActorsByIds } from "../dal.js";
 import DataLoader from "dataloader";
 import consola from "consola";
-import {getMoviesByActorIds} from "../db.js";
+import { getMoviesByActorIds } from "../dal.js";
 
 const context = (req) => {
   return {

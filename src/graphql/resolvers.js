@@ -1,12 +1,12 @@
 import consola from "consola";
-import { getActorById, getMovieById } from "../db.js";
-import { getMoviesByActorId } from "../db.js";
-import { getActorsByIds } from "../db.js";
-import {getAllMovies} from "../db.js";
-import {getAllActors} from "../db.js";
-import {addReviewToMovie} from "../db.js";
-import {deleteFirstReviewFromMovie} from "../db.js";
-import {addActor} from "../db.js";
+import { getActorById, getMovieById } from "../dal.js";
+import { getMoviesByActorId } from "../dal.js";
+import { getActorsByIds } from "../dal.js";
+import { getAllMovies } from "../dal.js";
+import { getAllActors } from "../dal.js";
+import { addReviewToMovie } from "../dal.js";
+import { deleteFirstReviewFromMovie } from "../dal.js";
+import { addActor } from "../dal.js";
 
 // Resolvers define "how" to fetch the types defined in the schema.
 // They match the structure of typeDefs
@@ -62,7 +62,7 @@ const resolvers = {
     },
     addActor: (_, args) => {
       consola.log(`In addActor: ${JSON.stringify(args)}`);
-      const newActor = addActor({...args});
+      const newActor = addActor({ ...args });
       return newActor;
     },
   },

@@ -1,10 +1,10 @@
 import consola from "consola";
-import { getActorById, getMovieById } from "../db.js";
-import {getAllMovies} from "../db.js";
-import {getAllActors} from "../db.js";
-import {addReviewToMovie} from "../db.js";
-import {deleteFirstReviewFromMovie} from "../db.js";
-import {addActor} from "../db.js";
+import { getActorById, getMovieById } from "../dal.js";
+import { getAllMovies } from "../dal.js";
+import { getAllActors } from "../dal.js";
+import { addReviewToMovie } from "../dal.js";
+import { deleteFirstReviewFromMovie } from "../dal.js";
+import { addActor } from "../dal.js";
 
 const resolvers = {
   Movie: {
@@ -17,8 +17,10 @@ const resolvers = {
   Actor: {
     movies: (parent, _, context) => {
       const { dataloaders } = context;
-      const res =  dataloaders.movies.load(parent.id);
-      consola.log(`dataloaders.movies for ${parent.id}: ${JSON.stringify(res)}`);
+      const res = dataloaders.movies.load(parent.id);
+      consola.log(
+        `dataloaders.movies for ${parent.id}: ${JSON.stringify(res)}`
+      );
       return res;
     },
   },
@@ -58,7 +60,7 @@ const resolvers = {
     },
     addActor: (_, args) => {
       consola.log(`In addActor: ${JSON.stringify(args)}`);
-      const newActor = addActor({...args});
+      const newActor = addActor({ ...args });
       return newActor;
     },
   },

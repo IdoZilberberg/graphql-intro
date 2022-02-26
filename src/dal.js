@@ -42,7 +42,7 @@ export const getMoviesByActorIds = async (actorIds) => {
     res.push(data.movies.filter((movie) => movie.actorIds.includes(actorId)));
   });
   consola.log(
-    `DB: getMoviesByActorIds(${actorIds}): ${JSON.stringify(res, null, 2)}`
+    `DB: getMoviesByActorIds(${actorIds})`
   );
   return res;
 };

@@ -12,12 +12,12 @@ import { addActor } from "../dal.js";
 // They match the structure of typeDefs
 const resolvers = {
   Movie: {
-    actors: (parent, args) => {
+    actors: (parent) => {
       return getActorsByIds(parent.actorIds);
     },
   },
   Actor: {
-    movies: (parent, args) => {
+    movies: (parent) => {
       //   return [{
       //     title: "TBD"
       //   }];

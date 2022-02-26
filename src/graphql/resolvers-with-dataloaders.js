@@ -10,18 +10,17 @@ const resolvers = {
   Movie: {
     actors: (parent, _, context) => {
       const { dataloaders } = context;
-      consola.log(`dataloaders.actors (${parent.actorIds})`);
+      consola.log(`dataloaders.actors actorIds=${parent.actorIds}`);
       return dataloaders.actors.loadMany(parent.actorIds);
     },
   },
   Actor: {
     movies: (parent, _, context) => {
       const { dataloaders } = context;
-      const res = dataloaders.movies.load(parent.id);
       consola.log(
-        `dataloaders.movies for ${parent.id}: ${JSON.stringify(res)}`
+        `dataloaders.movies movieId=${parent.id}`
       );
-      return res;
+      return dataloaders.movies.load(parent.id);
     },
   },
 
@@ -36,12 +35,12 @@ const resolvers = {
     },
     actor: (_, args) => {
       const { id } = args;
-      consola.log(`Query Actor with ID ${id}`);
+      consola.log(`=== Query Actor with ID ${id} ===`);
       return getActorById(id);
     },
     movie: (_, args) => {
       const { id } = args;
-      consola.log(`Query Movie with ID ${id}`);
+      consola.log(`=== Query Movie with ID ${id} ===`);
       return getMovieById(id);
     },
   },

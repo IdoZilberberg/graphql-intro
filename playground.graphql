@@ -1,0 +1,101 @@
+query Movies_Simple {
+  movies {
+    id
+    title
+    genre
+    reviews
+    releaseDate
+  }
+}
+
+query Movies_With_Actors {
+  movies {
+    id
+    title
+    genre
+    reviews
+    releaseDate
+    actors {
+      name
+    }
+  }
+}
+
+query Movies_Complex {
+  movies {
+    id
+    title
+    genre
+    reviews
+    releaseDate
+    actors {
+      name
+      movies {
+        title
+      }
+    }
+  }
+}
+
+mutation AddReview {
+  addReview(movieId: "2", content: "Excellent soundtrack") {
+    id
+    title
+    reviews
+  }
+}
+mutation AddActor {
+  addActor(newActor: { name: "Zendaya", bio: "Born on 1 September 1996" }) {
+    id
+    name
+    bio
+    movies {
+      title
+    }
+  }
+}
+
+mutation Mutation {
+  deleteFirstReview(movieId: "3") {
+    id
+    title
+    reviews
+  }
+}
+
+query Query {
+  movies {
+    title
+    actors {
+      name
+    }
+  }
+}
+
+query ICanCallItWhateverIWant {
+  actors {
+    id
+    name
+    bio
+    movies {
+      title
+    }
+  }
+}
+
+query OneActor {
+  actor(id: "1") {
+    name
+    bio
+  }
+}
+
+query OneMovie {
+  movie(id: "2") {
+    title
+    genre
+    actors {
+      name
+    }
+  }
+}

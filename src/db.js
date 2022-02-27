@@ -61,7 +61,7 @@ const movies = [
     medium: "Film",
     releaseDate: "2012",
     actorIds: ["104"],
-  }
+  },
 ];
 
 const actors = [
@@ -89,8 +89,8 @@ const actors = [
   },
   {
     id: "106",
-    name: "Tom Holland"
-  }
+    name: "Tom Holland",
+  },
 ];
 
 const data = {

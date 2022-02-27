@@ -4,7 +4,7 @@ import { getAllActors } from "../dal.js";
 import { addReviewToMovie } from "../dal.js";
 import { deleteFirstReviewFromMovie } from "../dal.js";
 import { addActor } from "../dal.js";
-import {getActorsByIds} from "../dal.js";
+import { getActorsByIds } from "../dal.js";
 
 const resolvers = {
   Movie: {
@@ -20,9 +20,7 @@ const resolvers = {
     movies: (parent, _, context) => {
       const { dataloaders } = context;
       const { id: actorId } = parent;
-      console.log(
-        `dataloaders.movies actorId=${actorId}`
-      );
+      console.log(`dataloaders.movies actorId=${actorId}`);
       return dataloaders.movies.load(actorId);
     },
   },

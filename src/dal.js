@@ -40,9 +40,7 @@ export const getMoviesByActorIds = async (actorIds) => {
   actorIds.forEach((actorId) => {
     res.push(data.movies.filter((movie) => movie.actorIds.includes(actorId)));
   });
-  console.log(
-    `DB: getMoviesByActorIds(${actorIds})`
-  );
+  console.log(`DB: getMoviesByActorIds(${actorIds})`);
   return res;
 };
 

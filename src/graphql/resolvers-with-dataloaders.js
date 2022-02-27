@@ -7,7 +7,11 @@ import { addActor } from "../dal.js";
 import { getActorsByIds } from "../dal.js";
 
 const resolvers = {
+
   Movie: {
+    title: ({title}) => {
+      return title.toUpperCase();
+    },
     actors: (parent, _, context) => {
       // const { dataloaders } = context;
       // console.log(`dataloaders.actors for movieId=${parent.id} actorIds=${parent.actorIds}`);
@@ -48,7 +52,7 @@ const resolvers = {
   Mutation: {
     addReview: (parent, args) => {
       const { movieId, content } = args;
-      const movie = addReviewToMovie(movieId);
+      const movie = addReviewToMovie(movieId, content);
       console.log(`There are now ${movie.reviews.length} reviews`);
       return movie;
     },
@@ -59,9 +63,10 @@ const resolvers = {
       return movie;
     },
     addActor: (_, args) => {
-      console.log(`In addActor: ${JSON.stringify(args)}`);
-      const newActor = addActor({ ...args });
-      return newActor;
+      const { newActor } = args;
+      console.log(`In addActor: ${JSON.stringify(newActor)}`);
+      const addedActor = addActor( newActor );
+      return addedActor;
     },
   },
 };

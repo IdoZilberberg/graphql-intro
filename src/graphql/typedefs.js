@@ -3,19 +3,22 @@
 import { gql } from "apollo-server-express";
 
 const typeDefs = gql`
-  # This "Book" type defines what fields the client can ask for
+  # This "Movie" type defines what fields the client can ask for
   type Movie {
     id: String!
     """
     This is the title
     """
     title: String!
-    """
-    This is the author's name
-    """
+      """
+      This is the genre
+      """
     genre: String
     releaseDate: String
     reviews: [String]
+      """
+      These are the actors
+      """
     actors: [Actor]
   }
 

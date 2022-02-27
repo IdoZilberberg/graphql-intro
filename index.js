@@ -1,1 +1,1 @@
-import './src/gql-simple.js'
+import './src/server-simple.js'

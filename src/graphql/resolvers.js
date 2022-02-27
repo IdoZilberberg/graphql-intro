@@ -1,4 +1,3 @@
-import consola from "consola";
 import { getActorById, getMovieById } from "../dal.js";
 import { getMoviesByActorId } from "../dal.js";
 import { getActorsByIds } from "../dal.js";
@@ -29,21 +28,21 @@ const resolvers = {
 
   Query: {
     movies: () => {
-      consola.log(`=== Query all Movies ===`);
+      console.log(`=== Query all Movies ===`);
       return getAllMovies();
     },
     actors: () => {
-      consola.log(`=== Query all Actors ===`);
+      console.log(`=== Query all Actors ===`);
       return getAllActors();
     },
     actor: (_, args) => {
       const { id } = args;
-      consola.log(`Query Actor with ID ${id}`);
+      console.log(`Query Actor with ID ${id}`);
       return getActorById(id);
     },
     movie: (_, args) => {
       const { id } = args;
-      consola.log(`Query Movie with ID ${id}`);
+      console.log(`Query Movie with ID ${id}`);
       return getMovieById(id);
     },
   },
@@ -51,17 +50,17 @@ const resolvers = {
     addReview: (parent, args) => {
       const { movieId, content } = args;
       const movie = addReviewToMovie(movieId);
-      consola.log(`There are now ${movie.reviews.length} reviews`);
+      console.log(`There are now ${movie.reviews.length} reviews`);
       return movie;
     },
     deleteFirstReview: (parent, args) => {
       const { movieId } = args;
       const movie = deleteFirstReviewFromMovie(movieId);
-      consola.log(`There are now ${movie.reviews.length} reviews`);
+      console.log(`There are now ${movie.reviews.length} reviews`);
       return movie;
     },
     addActor: (_, args) => {
-      consola.log(`In addActor: ${JSON.stringify(args)}`);
+      console.log(`In addActor: ${JSON.stringify(args)}`);
       const newActor = addActor({ ...args });
       return newActor;
     },

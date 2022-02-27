@@ -20,7 +20,7 @@ The following commands were used to create the initial project:
 
 ``` 
 npm init --yes
-npm install express apollo-server-express consola 
+npm install express apollo-server-express 
 npm i prettier --save-dev     (not a must)
 ```
 In `package.json` file, added this line:

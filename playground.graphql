@@ -2,9 +2,24 @@ query Movies_Simple {
   movies {
     id
     title
-    genre
-    reviews
-    releaseDate
+    # genre
+    # reviews
+    # releaseDate
+  }
+}
+
+query Actors_Simple {
+  actors {
+    id
+    name
+    movies {
+      id
+      title
+      actors {
+        id
+        name
+      }
+    }
   }
 }
 
@@ -12,10 +27,11 @@ query Movies_With_Actors {
   movies {
     id
     title
-    genre
-    reviews
-    releaseDate
+    # genre
+    # reviews
+    # releaseDate
     actors {
+      id
       name
     }
   }
@@ -25,12 +41,14 @@ query Movies_Complex {
   movies {
     id
     title
-    genre
-    reviews
-    releaseDate
+    # genre
+    # reviews
+    # releaseDate
     actors {
+      id
       name
       movies {
+        id
         title
       }
     }
@@ -84,17 +102,25 @@ query ICanCallItWhateverIWant {
 }
 
 query OneActor {
-  actor(id: "1") {
+  actor(id: "106") {
     name
     bio
+    movies {
+      title
+      # actors {
+      #   name
+      # }
+    }
   }
 }
 
 query OneMovie {
-  movie(id: "2") {
+  movie(id: "1") {
+    id
     title
     genre
     actors {
+      id
       name
     }
   }

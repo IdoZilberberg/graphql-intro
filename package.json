@@ -12,7 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "apollo-server-express": "^3.6.3",
-    "consola": "^2.15.3",
     "dataloader": "^2.0.0",
     "express": "^4.17.3"
   },

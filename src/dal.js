@@ -1,14 +1,13 @@
-import consola from "consola";
 import data from "./db.js";
 // DAL stands for Data Access Layer - you would replace this to access a real database
 
 export const getAllMovies = () => {
-  consola.log(`DB: getAllMovies`);
+  console.log(`DB: getAllMovies`);
   return data.movies;
 };
 
 export const getAllActors = () => {
-  consola.log(`DB: getAllActors`);
+  console.log(`DB: getAllActors`);
   return data.actors;
 };
 
@@ -22,17 +21,17 @@ export const addActor = (actor) => {
 };
 
 export const getMovieById = (id) => {
-  consola.log(`DB: getMovieById(${id})`);
+  console.log(`DB: getMovieById(${id})`);
   return data.movies.find((movies) => movies.id === id);
 };
 
 export const getActorById = (id) => {
-  consola.log(`DB: getActorById(${id})`);
+  console.log(`DB: getActorById(${id})`);
   return data.actors.find((actor) => actor.id === id);
 };
 
 export const getMoviesByActorId = async (actorId) => {
-  consola.log(`DB: getMoviesByActorId(${actorId})`);
+  console.log(`DB: getMoviesByActorId(${actorId})`);
   return data.movies.filter((movie) => movie.actorIds.includes(actorId));
 };
 
@@ -41,26 +40,26 @@ export const getMoviesByActorIds = async (actorIds) => {
   actorIds.forEach((actorId) => {
     res.push(data.movies.filter((movie) => movie.actorIds.includes(actorId)));
   });
-  consola.log(
+  console.log(
     `DB: getMoviesByActorIds(${actorIds})`
   );
   return res;
 };
 
 export const getActorsByIds = async (ids) => {
-  consola.log(`DB: getActorsByIds(${ids})`);
+  console.log(`DB: getActorsByIds(${ids})`);
   return data.actors.filter((actor) => ids.includes(actor.id));
 };
 
 export const addReviewToMovie = (movieId, review) => {
-  consola.log(`DB: addReviewToMovie(${movieId})`);
+  console.log(`DB: addReviewToMovie(${movieId})`);
   const movie = getMovieById(movieId);
   movie.reviews.push(review);
   return movie;
 };
 
 export const deleteFirstReviewFromMovie = (movieId) => {
-  consola.log(`DB: deleteFirstReviewFromMovie(${movieId})`);
+  console.log(`DB: deleteFirstReviewFromMovie(${movieId})`);
   const movie = getMovieById(movieId);
   movie.reviews.shift();
   return movie;

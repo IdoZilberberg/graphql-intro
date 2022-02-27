@@ -21,11 +21,11 @@ const movies = [
   },
   {
     id: "3",
-    title: "Doctor Strange",
+    title: "Spider-Man: No Way Home",
     genre: "Action Comics",
     medium: "Film",
-    releaseDate: "2016",
-    actorIds: ["101"],
+    releaseDate: "2021",
+    actorIds: ["101", "106"],
   },
   {
     id: "4",
@@ -39,8 +39,29 @@ const movies = [
     title: "Me before you",
     medium: "Film",
     releaseDate: "2021",
-    actorIds: ["103", "105"],
+    actorIds: ["102", "105"],
   },
+  {
+    id: "6",
+    title: "Avengers: Endgame",
+    medium: "Film",
+    releaseDate: "2019",
+    actorIds: ["101", "106"],
+  },
+  {
+    id: "7",
+    title: "Captain America: Civil War",
+    medium: "Film",
+    releaseDate: "2016",
+    actorIds: ["104", "106"],
+  },
+  {
+    id: "8",
+    title: "The Hobbit: An Unexpected Journey",
+    medium: "Film",
+    releaseDate: "2012",
+    actorIds: ["104"],
+  }
 ];
 
 const actors = [
@@ -66,6 +87,10 @@ const actors = [
     id: "105",
     name: "Charles Dance",
   },
+  {
+    id: "106",
+    name: "Tom Holland"
+  }
 ];
 
 const data = {

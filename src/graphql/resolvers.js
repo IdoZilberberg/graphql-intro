@@ -7,7 +7,7 @@ import { addActor } from "../dal.js";
 import { getActorsByIds } from "../dal.js";
 import { getMoviesByActorId } from "../dal.js";
 
-const USE_DATALOADERS = true;
+const USE_DATALOADERS = false;
 
 const resolvers = {
   Movie: {

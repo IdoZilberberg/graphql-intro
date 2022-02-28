@@ -22,12 +22,12 @@ export const addActor = (actor) => {
 
 export const getMovieById = (id) => {
   console.log(`DB: getMovieById(${id})`);
-  return data.movies.find((movies) => movies.id === id);
+  return data.movies.find((movies) => movies.id === parseInt(id));
 };
 
 export const getActorById = (id) => {
   console.log(`DB: getActorById(${id})`);
-  return data.actors.find((actor) => actor.id === id);
+  return data.actors.find((actor) => actor.id === parseInt(id));
 };
 
 export const getMoviesByActorId = async (actorId) => {
@@ -54,6 +54,7 @@ export const addReviewToMovie = (movieId, review) => {
   const movie = getMovieById(movieId);
   movie.reviews.push(review);
   return movie;
+
 };
 
 export const deleteFirstReviewFromMovie = (movieId) => {

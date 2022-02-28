@@ -5,7 +5,7 @@ import { gql } from "apollo-server-express";
 const typeDefs = gql`
   # The "Movie" type defines what fields the client can ask for in a Movie
   type Movie {
-    id: String!
+    id: ID!
     """
     This is the title
     """
@@ -23,7 +23,7 @@ const typeDefs = gql`
   }
 
   type Actor {
-    id: String!
+    id: ID!
     name: String!
     bio: String
     movies: [Movie]
@@ -39,13 +39,13 @@ const typeDefs = gql`
   type Query {
     movies: [Movie] # Query "movies" returns an Array of Movie elements
     actors: [Actor]
-    actor(id: String!): Actor
-    movie(id: String!): Movie
+    actor(id: ID!): Actor
+    movie(id: ID!): Movie
   }
   type Mutation {
-    addReview(movieId: String!, content: String!): Movie
+    addReview(movieId: ID!, content: String!): Movie
     addActor(newActor: ActorInput!): Actor
-    deleteFirstReview(movieId: String!): Movie
+    deleteFirstReview(movieId: ID!): Movie
   }
 `;
 

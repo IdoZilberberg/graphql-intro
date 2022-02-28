@@ -8,9 +8,10 @@ const context = (req) => {
         console.log(`DataLoader moviesByActorIds [${actorIds}]`);
         return getMoviesByActorIds(actorIds);
       }),
-      // TODO implement actors dataloader
     },
   };
 };
+
+// TODO implement actors dataloader
 
 export default context;

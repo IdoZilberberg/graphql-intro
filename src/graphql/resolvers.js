@@ -23,7 +23,7 @@ const resolvers = {
       const actorId = parent.id;
 
       if (USE_DATALOADERS) {
-        const { dataloaders } = context;
+        const { dataloaders } = context; // same as: const dataloaders = context.dataloaders;
         console.log(`dataloaders.movies actorId=${actorId}`);
         return dataloaders.movies.load(actorId);
       } else {

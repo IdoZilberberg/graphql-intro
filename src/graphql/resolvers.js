@@ -37,6 +37,11 @@ const resolvers = {
       console.log(`=== Query all Movies ===`);
       return getAllMovies();
     },
+    movie: (_, args) => {
+      const { id } = args; // destructing in Javascript. Same as const id = args.id
+      console.log(`=== Query Movie with ID ${id} ===`);
+      return getMovieById(id);
+    },
     actors: () => {
       console.log(`=== Query all Actors ===`);
       return getAllActors();
@@ -46,20 +51,15 @@ const resolvers = {
       console.log(`=== Query Actor with ID ${id} ===`);
       return getActorById(id);
     },
-    movie: (_, args) => {
-      const { id } = args;
-      console.log(`=== Query Movie with ID ${id} ===`);
-      return getMovieById(id);
-    },
   },
   Mutation: {
-    addReview: (parent, args) => {
+    addReview: (_, args) => {
       const { movieId, content } = args;
       const movie = addReviewToMovie(movieId, content);
       console.log(`There are now ${movie.reviews.length} reviews`);
       return movie;
     },
-    deleteFirstReview: (parent, args) => {
+    deleteFirstReview: (_, args) => {
       const { movieId } = args;
       const movie = deleteFirstReviewFromMovie(movieId);
       console.log(`There are now ${movie.reviews.length} reviews`);

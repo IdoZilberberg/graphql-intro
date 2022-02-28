@@ -30,11 +30,13 @@ export const getActorById = (id) => {
   return data.actors.find((actor) => actor.id === parseInt(id));
 };
 
+// Useful for Actor-->Movie[]
 export const getMoviesByActorId = async (actorId) => {
   console.log(`DB: getMoviesByActorId(${actorId})`);
   return data.movies.filter((movie) => movie.actorIds.includes(actorId));
 };
 
+// Useful for Movie-->Actor[]
 export const getMoviesByActorIds = async (actorIds) => {
   const res = [];
   actorIds.forEach((actorId) => {
@@ -54,7 +56,6 @@ export const addReviewToMovie = (movieId, review) => {
   const movie = getMovieById(movieId);
   movie.reviews.push(review);
   return movie;
-
 };
 
 export const deleteFirstReviewFromMovie = (movieId) => {

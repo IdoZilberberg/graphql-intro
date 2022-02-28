@@ -16,6 +16,8 @@ Boilerplate code for the demo:
 
 const app = express();
 const httpServer = http.createServer(app);
+
+// Create the Apollo Server with its configuration
 const server = new ApolloServer({
 });
 
@@ -25,9 +27,11 @@ server.applyMiddleware({
   path: "/graphql",
 });
 
-// Modified server startup
-await httpServer.listen({ port: 4000 });
-console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
+const PORT = 4001;
+
+// Start listening to incoming requests
+await httpServer.listen({ port: PORT });
+console.log(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`);
 
 
 
@@ -36,6 +40,7 @@ console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
 const app = express();
 const httpServer = http.createServer(app);
 
+// Create the Apollo Server with its configuration
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -49,5 +54,6 @@ server.applyMiddleware({
 });
 
 const PORT = 4000;
+// Start listening to incoming requests
 await httpServer.listen({ port: PORT });
 console.log(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`);

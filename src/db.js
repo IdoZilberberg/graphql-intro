@@ -1,3 +1,6 @@
+// Our data is in a static file.
+// In a real-life scenario we would use a real database.
+
 const movies = [
   {
     id: 1,

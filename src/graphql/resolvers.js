@@ -9,6 +9,7 @@ import { getMoviesByActorId } from "../dal.js";
 
 const USE_DATALOADERS = false;
 
+// Resolvers follow a similar (though not identical) structure to that of the typeDefs
 const resolvers = {
   Movie: {
     title: ({ title }) => {

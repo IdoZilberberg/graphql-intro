@@ -3,22 +3,22 @@
 import { gql } from "apollo-server-express";
 
 const typeDefs = gql`
-  # This "Movie" type defines what fields the client can ask for
+  # The "Movie" type defines what fields the client can ask for in a Movie
   type Movie {
     id: String!
     """
     This is the title
     """
     title: String!
-      """
-      This is the genre
-      """
+    """
+    This is the genre
+    """
     genre: String
     releaseDate: String
     reviews: [String]
-      """
-      These are the actors
-      """
+    """
+    These are the actors
+    """
     actors: [Actor]
   }
 
@@ -29,12 +29,13 @@ const typeDefs = gql`
     movies: [Movie]
   }
 
+  # Mutations must use an input type as parameters
   input ActorInput {
     name: String!
     bio: String
   }
 
-  # The "Query" type is a "meta" type - it lists all of the available queries that clients can execute
+  # The "Query" type defines the API = contract = all operations that clients can execute
   type Query {
     movies: [Movie] # Query "movies" returns an Array of Movie elements
     actors: [Actor]

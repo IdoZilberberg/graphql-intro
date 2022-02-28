@@ -13,7 +13,7 @@ export const getAllActors = () => {
 
 export const addActor = (actor) => {
   const newActor = {
-    id: data.actors[data.actors.length-1].id + 1,
+    id: data.actors[data.actors.length - 1].id + 1,
     ...actor,
   };
   data.actors.push(newActor);

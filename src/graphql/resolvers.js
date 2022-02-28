@@ -1,28 +1,34 @@
 import { getActorById, getMovieById } from "../dal.js";
-import { getMoviesByActorId } from "../dal.js";
-import { getActorsByIds } from "../dal.js";
 import { getAllMovies } from "../dal.js";
 import { getAllActors } from "../dal.js";
 import { addReviewToMovie } from "../dal.js";
 import { deleteFirstReviewFromMovie } from "../dal.js";
 import { addActor } from "../dal.js";
+import { getActorsByIds } from "../dal.js";
+import { getMoviesByActorId } from "../dal.js";
 
-// Resolvers define "how" to fetch the types defined in the schema.
-// They match the structure of typeDefs
+const USE_DATALOADERS = true;
+
 const resolvers = {
   Movie: {
+    title: ({ title }) => {
+      return title.toUpperCase();
+    },
     actors: (parent) => {
-      return getActorsByIds(parent.actorIds);
+      return getActorsByIds(parent.actorIds); // Can also implement dataloaders for this one
     },
   },
   Actor: {
-    movies: (parent) => {
-      //   return [{
-      //     title: "TBD"
-      //   }];
-      // }
+    movies: (parent, _, context) => {
       const actorId = parent.id;
-      return getMoviesByActorId(actorId);
+
+      if (USE_DATALOADERS) {
+        const { dataloaders } = context;
+        console.log(`dataloaders.movies actorId=${actorId}`);
+        return dataloaders.movies.load(actorId);
+      } else {
+        return getMoviesByActorId(actorId);
+      }
     },
   },
 
@@ -37,12 +43,12 @@ const resolvers = {
     },
     actor: (_, args) => {
       const { id } = args;
-      console.log(`Query Actor with ID ${id}`);
+      console.log(`=== Query Actor with ID ${id} ===`);
       return getActorById(id);
     },
     movie: (_, args) => {
       const { id } = args;
-      console.log(`Query Movie with ID ${id}`);
+      console.log(`=== Query Movie with ID ${id} ===`);
       return getMovieById(id);
     },
   },
@@ -62,7 +68,7 @@ const resolvers = {
     addActor: (_, args) => {
       const { newActor } = args;
       console.log(`In addActor: ${JSON.stringify(newActor)}`);
-      const addedActor = addActor( newActor );
+      const addedActor = addActor(newActor);
       return addedActor;
     },
   },

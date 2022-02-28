@@ -3,9 +3,8 @@
 
 import http from "http";
 import express from "express";
-import { ApolloServer, gql } from "apollo-server-express";
-// import resolvers from "./graphql/resolvers.js";
-import resolvers from "./graphql/resolvers-with-dataloaders.js";
+import { ApolloServer } from "apollo-server-express";
+import resolvers from "./graphql/resolvers.js";
 import typeDefs from "./graphql/typedefs.js";
 import context from "./graphql/context.js";
 

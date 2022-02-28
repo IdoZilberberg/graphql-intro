@@ -1,6 +1,5 @@
-import { getActorsByIds } from "../dal.js";
-import DataLoader from "dataloader";
 import { getMoviesByActorIds } from "../dal.js";
+import DataLoader from "dataloader";
 
 const context = (req) => {
   return {
@@ -9,10 +8,7 @@ const context = (req) => {
         console.log(`DataLoader moviesByActorIds [${actorIds}]`);
         return getMoviesByActorIds(actorIds);
       }),
-      // actors: new DataLoader(async (actorIds) => {
-      //   console.log(`DataLoader actors [${actorIds}]`);
-      //   return getActorsByIds(actorIds);
-      // }),
+      // TODO implement actors dataloader
     },
   };
 };
